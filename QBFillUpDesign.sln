@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QBFillUpDesign", "QBFillUpDesign\QBFillUpDesign.csproj", "{0BD1D193-099F-48EE-B32F-4AC050E2B750}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BD1D193-099F-48EE-B32F-4AC050E2B750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD1D193-099F-48EE-B32F-4AC050E2B750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD1D193-099F-48EE-B32F-4AC050E2B750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD1D193-099F-48EE-B32F-4AC050E2B750}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E36ECC2A-7ECC-44A0-BDCC-9691132CAEB4}
+	EndGlobalSection
+EndGlobal
