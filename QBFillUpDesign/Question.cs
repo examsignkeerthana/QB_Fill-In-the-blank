@@ -6,8 +6,26 @@ using System.Threading.Tasks;
 
 namespace QBFillUpDesign
 {
-    class Question
+    class FillUpQuestionModel
     {
-        public string name { get; set; }
+        public String Question { get; set; }
+
+        public bool QuesHasImage { get; set; }
+
+        public List<String> ImagePath { get; set; }
+
+        public List<FillUpAnswerModel> Answer { get; set; }
+
     }
+    class FillUpAnswerModel
+    {
+        public String Answer { get; set; }
+
+        public List<string> AltAns { get; set; }
+
+        public String AnsType { get; set; }
+
+        public int Position { get; set; }
+    }
+   
 }

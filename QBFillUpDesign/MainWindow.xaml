@@ -9,8 +9,8 @@
     <Window.Resources>
         <DataTemplate x:Key="txtboxRemove" >
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding name}" TextTrimming="CharacterEllipsis" Padding="2,6" Width="100" FontSize="14" Height="30"/>
-                <Button Width="30" Height="30" x:Name="btnRemove" Click="btnRemove_Click" Foreground="WhiteSmoke" Content="X" FontSize="20"/>
+                <TextBlock x:Name="txtboxImgPath" Text="{Binding}" Padding="2,6"  FontSize="14" Height="30"/>
+                <Button Width="20" Height="20" x:Name="btnRemove" Click="btnRemove_Click" Foreground="WhiteSmoke" Content="X" FontSize="16"/>
             </StackPanel>
         </DataTemplate>
 
@@ -76,20 +76,15 @@
     </Window.Resources>
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <Grid Width="900" Background="PaleGoldenrod">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="300"/>
-                    <RowDefinition Height="300"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Width="900" Background="PaleGoldenrod">
                 <!--Question-->
-                <StackPanel Grid.Row="0">
+                <StackPanel  x:Name="Question" Orientation="Vertical">
                     <TextBlock Background="White" Text="Question" Width="90" HorizontalAlignment="Left" Margin="20,10" FontSize="20" FontWeight="Bold"/>
                     <Border Width="860" Height="250" BorderBrush="Black" BorderThickness="1">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Width="860">
                                 <StackPanel Width="550">
-                                    <Button Style="{DynamicResource RoundCorner}" Content="Insert Blank" x:Name="btnBlank" Click="btnBlank_Click" Width="100" Height="30" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10"/>
+                                    <Button Style="{DynamicResource RoundCorner}" Content="Insert Blank" x:Name="btnInsertBlank" Click="btnInsertBlank_Click" Width="100" Height="30" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10"/>
                                 </StackPanel>
                                 <Button Style="{DynamicResource RoundCorner}" Content="Clear" x:Name="btnClear" Click="btnClear_Click" Width="100" Height="30" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,10,0,10"/>
                                 <Button Style="{DynamicResource RoundCorner}" Content="Preview" x:Name="btnPreview" Click="btnPreview_Click" Width="100" Height="30" FontSize="16" VerticalAlignment="Top" Margin="20,10"/>
@@ -98,7 +93,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Button Style="{DynamicResource RoundCorner}" Content="Add Image" x:Name="btnAddImage" Click="btnAddImage_Click" Width="100" Height="30" Margin="20,15"/>
                                 <!--<TextBlock x:Name="txtblckImg" Width="150" Height="30"/>-->
-                                <ListBox  Name="lstboxImgPath" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="700" Margin="0,10" BorderThickness="0" Background="Transparent">
+                                <ListBox  Name="lstboxImgPath" ItemTemplate="{StaticResource txtboxRemove}" Width="700" Margin="0,10" BorderThickness="0" Background="Transparent">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
@@ -112,12 +107,116 @@
                 <!--End Of Question-->
                 
                 <!--First Blank-->
-                <StackPanel Grid.Row="1" Margin="-8,0,8,0">
-                    <TextBlock Background="White" Text="Answer" Width="90" HorizontalAlignment="Left" Margin="20,10" FontSize="20" FontWeight="Bold"/>
+                <StackPanel x:Name="Answer1">
+                    <TextBlock Background="White" x:Name="HeaderAns1" Text="Answer" Width="90" HorizontalAlignment="Left" Margin="20,10" FontSize="20" FontWeight="Bold"/>
+                    <Border Width="860" Height="300" BorderBrush="Black" BorderThickness="1" Margin="26,0,14,0">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                            <TextBlock Background="White"  Text="Answer Type" Width="100" HorizontalAlignment="Left" Margin="20,10" FontSize="16" FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rdiobtnAns1Integer" Checked="rdiobtnAns1Integer_Checked" GroupName="AnsType" Content="Integer" Width="100" Height="40" FontSize="16" Margin="50,0" />
+                                <RadioButton  x:Name="rdiobtnAns1Float" Checked="rdiobtnAns1Float_Checked" GroupName="AnsType" Content="Float" Width="100" Height="40" FontSize="16"  Margin="50,0" />
+                                <RadioButton  x:Name="rdiobtnAns1String" Checked="rdiobtnAns1String_Checked"  GroupName="AnsType" Content="String" FontSize="16" Width="100" Height="40"  Margin="50,0" />
+                                <RadioButton  x:Name="rdiobtnAns1Fraction" Checked="rdiobtnAns1Fraction_Checked" GroupName="AnsType" Content="Fraction" FontSize="16" Width="100" Height="40"  Margin="50,0" />
+                            </StackPanel>
+                            <StackPanel x:Name="stkpnlFraction" Orientation="Horizontal" Width="900" Visibility="Collapsed">
+                                <RadioButton GroupName="FractionFormat" Content="A/B" Margin="650,0,0,0" FontSize="16" Width="50" Height="40" x:Name="rdiobtnAns1FormatAB" Checked="rdiobtnAns1FormatAB_Checked" />
+                                <RadioButton GroupName="FractionFormat" Content="A.B/C" FontSize="16" Width="65" Height="40" x:Name="rdiobtnAns1FormatABC" Checked="rdiobtnAns1FormatABC_Checked" />
+                            </StackPanel>
+                            <Separator Background="Black"/>
+                            <!--<Line X1="0" Y1="5" X2="860" Y2="5" Stroke="Black" StrokeThickness="1" />-->
+                            <Grid ShowGridLines="True" Height="213">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="429"/>
+                                    <ColumnDefinition Width="430"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <TextBlock Text="Answer" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,5"/>
+                                    <Separator Background="Black"/>
+                                    <StackPanel Orientation="Horizontal" x:Name="stkpnlAns1TxtbxBtn">
+                                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="2" Margin="10,10,0,0"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBox Padding="0,10,0,0" FontSize="16" x:Name="txtboxAns1" TextChanged="txtboxAns1_TextChanged" Width="350" Height="40" BorderThickness="0"/>
+                                        </Border>
+                                        <Button Style="{DynamicResource RoundCorner}" x:Name="btnAddAns1" Click="btnAddAns1_Click" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
+                                    </StackPanel>
+                                    <!--Fraction-->
+                                    <StackPanel x:Name="stkpnlFractFormatAB" Orientation="Horizontal" Margin="20,10,0,0" Height="110" Visibility="Collapsed">
+                                        <StackPanel Orientation="Vertical" Height="100">
+                                            <TextBlock Text="A" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                            <Separator Foreground="Black"/>
+                                            <TextBlock Text="B" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                        </StackPanel>
+                                        <TextBlock Text=":" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
+                                        <StackPanel Orientation="Vertical" Height="110">
+                                            <TextBox x:Name="txtbxAB_A" Padding="0,10,0,0" TextChanged="txtbxAB_A_TextChanged" Width="100" Height="40"/>
+                                            <Separator Foreground="Black"  Margin="5,10"/>
+                                            <TextBox x:Name="txtbxAB_B" Padding="0,10,0,0"  TextChanged="txtbxAB_B_TextChanged" Width="100" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+                                    <StackPanel x:Name="stkpnlFractFormatABC" Orientation="Horizontal" Visibility="Collapsed">
+                                        <TextBlock Text="A" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,0"/>
+                                        <StackPanel Orientation="Vertical" Height="90">
+                                            <TextBlock Text="B" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                            <Separator Foreground="Black"/>
+                                            <TextBlock Text="C" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                        </StackPanel>
+                                        <TextBlock Text="  :  " VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
+                                        <TextBox x:Name="txtbxABC_A" TextChanged="txtbxABC_A_TextChanged" Padding="0,10,0,0" Width="100" Height="40" Margin="10,0"/>
+                                        <StackPanel Orientation="Vertical" Height="100">
+                                            <TextBox x:Name="txtbxABC_B" TextChanged="txtbxABC_B_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                            <Separator Foreground="Black"  Margin="5,10"/>
+                                            <TextBox x:Name="txtbxABC_c" TextChanged="txtbxABC_c_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <TextBlock Visibility="Collapsed" Height="30" x:Name="txtblkErrMsg" Margin="50,10,0,0" Foreground="Red" FontSize="16"/>
+                                
+                                <!--#endregion-->
+                                    <ListBox Name="lstboxAns1" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                        
+                                    </ListBox>
+                                </StackPanel>
+
+                                 <!--Alternate Answer-->
+                                <StackPanel Grid.Column="1" Orientation="Vertical">
+                                    <TextBlock Text="Alternate Answer" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,5"/>
+                                    <Separator Background="Black"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="2" Margin="10,10,0,0"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBox Width="350" Height="40" BorderThickness="0"/>
+                                        </Border>
+                                        <Button Style="{DynamicResource RoundCorner}" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
+                                    </StackPanel>
+                                    <ListBox Name="lstboxAltAns" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+
+                                    </ListBox>
+                                </StackPanel>
+                            </Grid>
+                            
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <!--#endregion-->
+
+                <!--Second Blank-->
+                <StackPanel x:Name="Answer2" Margin="-8,0,8,0">
+                    <TextBlock Background="White" x:Name="HeaderAns2" Text="Answer" Width="90" HorizontalAlignment="Left" Margin="20,10" FontSize="20" FontWeight="Bold"/>
                     <Border Width="860" Height="250" BorderBrush="Black" BorderThickness="1">
                         <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                             <StackPanel Orientation="Horizontal" Width="860">
-                                <ComboBox x:Name="cmboboxQuesType" Width="120" Height="30" FontSize="16" Margin="730,5,0,5">
+                                <ComboBox x:Name="cmboboxQuesTypeAns2" Width="120" Height="30" FontSize="16" Margin="730,5,0,5">
                                     <ComboBoxItem Content="Integer" FontSize="16"></ComboBoxItem>
                                     <ComboBoxItem Content="Float" FontSize="16"></ComboBoxItem>
                                     <ComboBoxItem Content="String" FontSize="16"></ComboBoxItem>
@@ -135,8 +234,8 @@
                                     <TextBlock Text="Answer" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,5"/>
                                     <Separator Background="Black"/>
                                     <StackPanel Orientation="Horizontal" Height="40">
-                                        <RadioButton GroupName="FractionFormat" Content="A/B" Margin="90,10" FontSize="18" Width="50" Height="40" x:Name="rdiobtnFormatAB"/>
-                                        <RadioButton GroupName="FractionFormat" Content="A.B/C"  Margin="10" FontSize="18" Width="65" Height="40" x:Name="rdiobtnFormatABC"/>
+                                        <RadioButton GroupName="FractionFormatAns2" Content="A/B" Margin="90,10" FontSize="18" Width="50" Height="40" x:Name="rdiobtnFormatAB_Blnk2"/>
+                                        <RadioButton GroupName="FractionFormatAns2" Content="A.B/C"  Margin="10" FontSize="18" Width="65" Height="40" x:Name="rdiobtnFormatABC_Blnk2"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="2" Margin="10,10,0,0"
@@ -145,17 +244,17 @@
                                         </Border>
                                         <Button Style="{DynamicResource RoundCorner}" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
                                     </StackPanel>
-                                    <ListBox Name="lstboxAns" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
-                                    <ListBox.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"/>
-                                        </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
-                                        
+                                    <ListBox Name="lstboxAns2" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+
                                     </ListBox>
                                 </StackPanel>
 
-                                 <!--Alternate Answer-->
+                                <!--Alternate Answer-->
                                 <StackPanel Grid.Column="1" Orientation="Vertical">
                                     <TextBlock Text="Alternate Answer" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,5"/>
                                     <Separator Background="Black"/>
@@ -166,7 +265,7 @@
                                         </Border>
                                         <Button Style="{DynamicResource RoundCorner}" Height="40" Width="40" Margin="10,50,0,0" Content="+" FontSize="20"/>
                                     </StackPanel>
-                                    <ListBox Name="lstboxAltAns" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
+                                    <ListBox Name="lstboxAltAns2" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
                                         <ListBox.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <StackPanel Orientation="Horizontal"/>
@@ -176,14 +275,15 @@
                                     </ListBox>
                                 </StackPanel>
                             </Grid>
-                            
+
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <!--Insert Button-->
-                <Button Style="{DynamicResource RoundCorner}" Margin="0,30" Grid.Row="2" Content="Insert" Width="150" Height="50"/>
 
-            </Grid>
+                <!--Insert Button-->
+                <Button Style="{DynamicResource RoundCorner}" Margin="0,30" Content="Insert" Width="150" Height="50"/>
+
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>
