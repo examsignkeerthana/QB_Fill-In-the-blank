@@ -95,5 +95,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SQL\FillUpChoices.sql" />
+    <Content Include="SQL\FillUpQuestions.sql" />
+    <Content Include="SQL\Media.sql" />
+    <Content Include="SQL\QuestionMeta.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

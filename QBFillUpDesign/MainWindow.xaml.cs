@@ -24,7 +24,8 @@ namespace QBFillUpDesign
     public partial class MainWindow : Window
     {
         int hasMedia = 0;
-        string ansType = "";
+        string ans1Type = "";
+        string ans2Type = "";
         string ans = "";
         int pos = 1;
 
@@ -32,7 +33,12 @@ namespace QBFillUpDesign
         string Ques = "";
         string Qimgpath = "";
 
-        ObservableCollection<string> Ans1 = new ObservableCollection<string>();
+        ObservableCollection<string> OCAltAns1 = new ObservableCollection<string>();
+        ObservableCollection<string> OCAns1 = new ObservableCollection<string>();
+
+        ObservableCollection<string> OCAltAns2 = new ObservableCollection<string>();
+        ObservableCollection<string> OCAns2 = new ObservableCollection<string>();
+
         ObservableCollection<string> path = new ObservableCollection<string>();
         public MainWindow()
         {
@@ -54,14 +60,49 @@ namespace QBFillUpDesign
 
         }
 
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        private void btnImgPathRemove_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             string p = button.DataContext as string;
             int index = path.IndexOf(p);
 
             path.RemoveAt(index);
-            
+        }
+
+        private void btnAns1Remove_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            string p = button.DataContext as string;
+            int index = OCAns1.IndexOf(p);
+
+            OCAns1.RemoveAt(index);
+        }
+
+        private void btnAltAns1Remove_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            string p = button.DataContext as string;
+            int index = OCAltAns1.IndexOf(p);
+
+            OCAltAns1.RemoveAt(index);
+        }
+
+        private void btnAns2Remove_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            string p = button.DataContext as string;
+            int index = OCAns2.IndexOf(p);
+
+            OCAns2.RemoveAt(index);
+        }
+
+        private void btnAltAns2Remove_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            string p = button.DataContext as string;
+            int index = OCAltAns2.IndexOf(p);
+
+            OCAltAns2.RemoveAt(index);
         }
 
         private void btnAddImage_Click(object sender, RoutedEventArgs e)
@@ -110,62 +151,93 @@ namespace QBFillUpDesign
         }
         private void rdiobtnAns1Integer_Checked(object sender, RoutedEventArgs e)
         {
-            ansType = "Integer";
-            stkpnlFraction.Visibility = Visibility.Collapsed;
+            
+            ans1Type = "Integer";
+            stkpnlAns1Fraction.Visibility = Visibility.Collapsed;
             txtboxAns1.Text = "";
+            txtboxAns1.Focus();
 
-            stkpnlFractFormatAB.Visibility = Visibility.Collapsed;
-            stkpnlFractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatABC.Visibility = Visibility.Collapsed;
             stkpnlAns1TxtbxBtn.Visibility = Visibility.Visible;
+
+            stkpnlAltAns1FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1TxtbxBtn.Visibility = Visibility.Visible;
         }
 
         private void rdiobtnAns1Float_Checked(object sender, RoutedEventArgs e)
         {
-            ansType = "Float";
-            stkpnlFraction.Visibility = Visibility.Collapsed;
+            ans1Type = "Float";
+            stkpnlAns1Fraction.Visibility = Visibility.Collapsed;
             txtboxAns1.Text = "";
+            txtboxAns1.Focus();
 
-            stkpnlFractFormatAB.Visibility = Visibility.Collapsed;
-            stkpnlFractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatABC.Visibility = Visibility.Collapsed;
             stkpnlAns1TxtbxBtn.Visibility = Visibility.Visible;
+
+            stkpnlAltAns1FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1TxtbxBtn.Visibility = Visibility.Visible;
         }
 
         private void rdiobtnAns1String_Checked(object sender, RoutedEventArgs e)
         {
-            ansType = "String";
-            stkpnlFraction.Visibility = Visibility.Collapsed;
+            ans1Type = "String";
+            stkpnlAns1Fraction.Visibility = Visibility.Collapsed;
             txtboxAns1.Text = "";
+            txtboxAns1.Focus();
 
-            stkpnlFractFormatAB.Visibility = Visibility.Collapsed;
-            stkpnlFractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatABC.Visibility = Visibility.Collapsed;
             stkpnlAns1TxtbxBtn.Visibility = Visibility.Visible;
+
+
+            stkpnlAltAns1FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1TxtbxBtn.Visibility = Visibility.Visible;
         }
 
         private void rdiobtnAns1Fraction_Checked(object sender, RoutedEventArgs e)
         {
-            ansType = "Fraction";
+            ans1Type = "Fraction";
             txtboxAns1.Text = "";
+            txtboxAns1.Focus();
 
             rdiobtnAns1FormatAB.IsChecked = false;
             rdiobtnAns1FormatABC.IsChecked = false;
-            stkpnlFraction.Visibility = Visibility.Visible;
+            stkpnlAns1Fraction.Visibility = Visibility.Visible;
+
         }
 
 
         private void rdiobtnAns1FormatAB_Checked(object sender, RoutedEventArgs e)
         {
             stkpnlAns1TxtbxBtn.Visibility = Visibility.Collapsed;
-            stkpnlFractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatABC.Visibility = Visibility.Collapsed;
 
-            stkpnlFractFormatAB.Visibility = Visibility.Visible;
+            stkpnlAns1FractFormatAB.Visibility = Visibility.Visible;
+            txtbxAns1AB_A.Focus();
+
+            stkpnlAltAns1TxtbxBtn.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1FractFormatABC.Visibility = Visibility.Collapsed;
+
+            stkpnlAltAns1FractFormatAB.Visibility = Visibility.Visible;
         }
 
         private void rdiobtnAns1FormatABC_Checked(object sender, RoutedEventArgs e)
         {
             stkpnlAns1TxtbxBtn.Visibility = Visibility.Collapsed;
-            stkpnlFractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatAB.Visibility = Visibility.Collapsed;
 
-            stkpnlFractFormatABC.Visibility = Visibility.Visible;
+            stkpnlAns1FractFormatABC.Visibility = Visibility.Visible;
+            txtbxAns1ABC_A.Focus();
+
+            stkpnlAltAns1TxtbxBtn.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1FractFormatAB.Visibility = Visibility.Collapsed;
+
+            stkpnlAltAns1FractFormatABC.Visibility = Visibility.Visible;
         }
 
         private void txtboxAns1_TextChanged(object sender, TextChangedEventArgs e)
@@ -179,17 +251,17 @@ namespace QBFillUpDesign
 
             if (rdiobtnAns1Integer.IsChecked == true)
             {
-                ansType = "Integer";
+                ans1Type = "Integer";
                 newText = IntAnswer(ch);
             }
             else if (rdiobtnAns1Float.IsChecked == true)
             {
-                ansType = "Float";
+                ans1Type = "Float";
                 newText = DecimalAnswer(ch);
             }
             else if (rdiobtnAns1String.IsChecked == true)
             {
-                ansType = "String";
+                ans1Type = "String";
                 foreach (char c in ch)
                 {
                     newText += c;
@@ -197,7 +269,8 @@ namespace QBFillUpDesign
             }
             else if (rdiobtnAns1Fraction.IsChecked == true)
             {
-                ansType = "Fraction";
+                ans1Type = "Fraction";
+                MessageBox.Show("Select SubType of Fraction");
             }
 
 
@@ -224,13 +297,27 @@ namespace QBFillUpDesign
                 }
                 else if (!char.IsDigit(c))
                 {
-                    txtblkErrMsg.Visibility = Visibility.Visible;
-                    txtblkErrMsg.Text = "Enter only Digits";
+                    txtblkAns1ErrMsg.Visibility = Visibility.Visible;
+                    txtblkAns1ErrMsg.Text = "Enter only Digits";
                 }
                 if (count == 1)
                 { pre += 1; }
             }
             return newText;
+        }
+
+        private void ReadIntegerValue(TextBox textBox)
+        {
+            Int32 selectionStart = textBox.SelectionStart;
+            Int32 selectionLength = textBox.SelectionLength;
+            String newText = String.Empty;
+            char[] ch = textBox.Text.ToCharArray();
+
+            newText = IntAnswer(ch);
+
+            textBox.Text = newText;
+            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
+
         }
 
         private string IntAnswer(char[] ch)
@@ -247,93 +334,367 @@ namespace QBFillUpDesign
                 }
                 else
                 {
-                    txtblkErrMsg.Visibility = Visibility.Visible;
-                    txtblkErrMsg.Text = "Enter only Digits";
+                    txtblkAns1ErrMsg.Visibility = Visibility.Visible;
+                    txtblkAns1ErrMsg.Text = "Enter only Digits";
                 }
 
             }
             return newText;
         }
 
-        private void txtbxAB_A_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtbxAns1AB_A_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            Int32 selectionStart = textBox.SelectionStart;
-            Int32 selectionLength = textBox.SelectionLength;
-            String newText = String.Empty;
-            char[] ch = textBox.Text.ToCharArray();
-
-            newText = IntAnswer(ch);
-
-            textBox.Text = newText;
-            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
-
+            ReadIntegerValue(textBox);
         }
 
-        private void txtbxAB_B_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtbxAns1AB_B_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            Int32 selectionStart = textBox.SelectionStart;
-            Int32 selectionLength = textBox.SelectionLength;
-            String newText = String.Empty;
-            char[] ch = textBox.Text.ToCharArray();
-
-            newText = IntAnswer(ch);
-
-            textBox.Text = newText;
-            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
-
+            ReadIntegerValue(textBox);
         }
 
-        private void txtbxABC_A_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtbxAns1ABC_A_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            Int32 selectionStart = textBox.SelectionStart;
-            Int32 selectionLength = textBox.SelectionLength;
-            String newText = String.Empty;
-            char[] ch = textBox.Text.ToCharArray();
-
-            newText = IntAnswer(ch);
-
-            textBox.Text = newText;
-            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
-
+            ReadIntegerValue(textBox);
         }
 
-        private void txtbxABC_B_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtbxAns1ABC_B_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            Int32 selectionStart = textBox.SelectionStart;
-            Int32 selectionLength = textBox.SelectionLength;
-            String newText = String.Empty;
-            char[] ch = textBox.Text.ToCharArray();
-
-            newText = IntAnswer(ch);
-
-            textBox.Text = newText;
-            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
-
+            ReadIntegerValue(textBox);
         }
 
-        private void txtbxABC_c_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtbxAns1ABC_c_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            Int32 selectionStart = textBox.SelectionStart;
-            Int32 selectionLength = textBox.SelectionLength;
-            String newText = String.Empty;
-            char[] ch = textBox.Text.ToCharArray();
-
-            newText = IntAnswer(ch);
-
-            textBox.Text = newText;
-            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
-
+            ReadIntegerValue(textBox);
         }
 
         private void btnAddAns1_Click(object sender, RoutedEventArgs e)
         {
-            Ans1.Add(txtboxAns1.Text);
-            lstboxAns1.ItemsSource = Ans1;
+            OCAns1.Add(txtboxAns1.Text);
+            lstboxAns1.ItemsSource = OCAns1;
+            txtboxAns1.Text = "";
+            txtboxAns1.Focus();
         }
+
+        private void txtboxAltAns1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            Int32 selectionStart = textBox.SelectionStart;
+            Int32 selectionLength = textBox.SelectionLength;
+            String newText = String.Empty;
+            //int count = 0;
+            char[] ch = textBox.Text.ToCharArray();
+
+            if (rdiobtnAns1Integer.IsChecked == true)
+            {
+                newText = IntAnswer(ch);
+            }
+            else if (rdiobtnAns1Float.IsChecked == true)
+            {
+                newText = DecimalAnswer(ch);
+            }
+            else if (rdiobtnAns1String.IsChecked == true)
+            {
+                foreach (char c in ch)
+                {
+                    newText += c;
+                }
+            }
+            //else if (rdiobtnAns1Fraction.IsChecked == true)
+            //{
+            //    MessageBox.Show("Select Fraction Type");
+            //}
+
+            textBox.Text = newText;
+            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
+        }
+
+        private void btnAddAltAns1_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty( txtboxAltAns1.Text ))
+            {
+                OCAltAns1.Add(txtboxAltAns1.Text);
+                lstboxAltAns1.ItemsSource = OCAltAns1;
+            }
+            
+            txtboxAltAns1.Text = "";
+            txtboxAltAns1.Focus();
+        }
+
+        private void txtbxAltAns1AB_A_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAltAns1AB_B_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAltAns1ABC_A_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAltAns1ABC_B_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAltAns1ABC_c_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void rdiobtnAns2Integer_Checked(object sender, RoutedEventArgs e)
+        {
+            ans2Type = "Integer";
+            stkpnlAns2Fraction.Visibility = Visibility.Collapsed;
+            txtboxAns2.Text = "";
+            txtboxAns2.Focus();
+
+            stkpnlAns2FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAns2FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAns2TxtbxBtn.Visibility = Visibility.Visible;
+
+            stkpnlAltAns2FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAltAns2FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAltAns2TxtbxBtn.Visibility = Visibility.Visible;
+        }
+
+        private void rdiobtnAns2Float_Checked(object sender, RoutedEventArgs e)
+        {
+            ans2Type = "Float";
+            stkpnlAns2Fraction.Visibility = Visibility.Collapsed;
+            txtboxAns2.Text = "";
+            txtboxAns2.Focus();
+
+            stkpnlAns2FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAns2FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAns2TxtbxBtn.Visibility = Visibility.Visible;
+
+            stkpnlAltAns2FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAltAns2FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAltAns2TxtbxBtn.Visibility = Visibility.Visible;
+        }
+
+        private void rdiobtnAns2String_Checked(object sender, RoutedEventArgs e)
+        {
+            ans1Type = "String";
+            stkpnlAns1Fraction.Visibility = Visibility.Collapsed;
+            txtboxAns1.Text = "";
+            txtboxAns1.Focus();
+
+            stkpnlAns1FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAns1FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAns1TxtbxBtn.Visibility = Visibility.Visible;
+
+
+            stkpnlAltAns1FractFormatAB.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1FractFormatABC.Visibility = Visibility.Collapsed;
+            stkpnlAltAns1TxtbxBtn.Visibility = Visibility.Visible;
+        }
+
+        private void rdiobtnAns2Fraction_Checked(object sender, RoutedEventArgs e)
+        {
+            ans1Type = "Fraction";
+            txtboxAns2.Text = "";
+            txtboxAns2.Focus();
+
+            rdiobtnAns2FormatAB.IsChecked = false;
+            rdiobtnAns2FormatABC.IsChecked = false;
+            stkpnlAns2Fraction.Visibility = Visibility.Visible;
+        }
+
+        private void rdiobtnAns2FormatAB_Checked(object sender, RoutedEventArgs e)
+        {
+            stkpnlAns2TxtbxBtn.Visibility = Visibility.Collapsed;
+            stkpnlAns2FractFormatABC.Visibility = Visibility.Collapsed;
+
+            stkpnlAns2FractFormatAB.Visibility = Visibility.Visible;
+            txtbxAns2AB_A.Focus();
+
+            stkpnlAltAns2TxtbxBtn.Visibility = Visibility.Collapsed;
+            stkpnlAltAns2FractFormatABC.Visibility = Visibility.Collapsed;
+
+            stkpnlAltAns2FractFormatAB.Visibility = Visibility.Visible;
+        }
+
+        private void rdiobtnAns2FormatABC_Checked(object sender, RoutedEventArgs e)
+        {
+            stkpnlAns2TxtbxBtn.Visibility = Visibility.Collapsed;
+            stkpnlAns2FractFormatAB.Visibility = Visibility.Collapsed;
+
+            stkpnlAns2FractFormatABC.Visibility = Visibility.Visible;
+            txtbxAns2ABC_A.Focus();
+
+            stkpnlAltAns2TxtbxBtn.Visibility = Visibility.Collapsed;
+            stkpnlAltAns2FractFormatAB.Visibility = Visibility.Collapsed;
+
+            stkpnlAltAns2FractFormatABC.Visibility = Visibility.Visible;
+        }
+
+        private void txtboxAns2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            Int32 selectionStart = textBox.SelectionStart;
+            Int32 selectionLength = textBox.SelectionLength;
+            String newText = String.Empty;
+            //int count = 0;
+            char[] ch = textBox.Text.ToCharArray();
+
+            if (rdiobtnAns2Integer.IsChecked == true)
+            {
+                ans2Type = "Integer";
+                newText = IntAnswer(ch);
+            }
+            else if (rdiobtnAns2Float.IsChecked == true)
+            {
+                ans2Type = "Float";
+                newText = DecimalAnswer(ch);
+            }
+            else if (rdiobtnAns2String.IsChecked == true)
+            {
+                ans2Type = "String";
+                foreach (char c in ch)
+                {
+                    newText += c;
+                }
+            }
+            else if (rdiobtnAns2Fraction.IsChecked == true)
+            {
+                ans2Type = "Fraction";
+                MessageBox.Show("Select SubType of Fraction");
+            }
+
+
+            textBox.Text = newText;
+            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
+
+        }
+
+        private void btnAddAns2_Click(object sender, RoutedEventArgs e)
+        {
+            OCAns2.Add(txtboxAns2.Text);
+            lstboxAns2.ItemsSource = OCAns2;
+            txtboxAns2.Text = "";
+            txtboxAns2.Focus();
+        }
+
+        private void txtbxAns2AB_A_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAns2AB_B_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAns2ABC_A_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAns2ABC_B_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAns2ABC_c_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtboxAltAns2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            Int32 selectionStart = textBox.SelectionStart;
+            Int32 selectionLength = textBox.SelectionLength;
+            String newText = String.Empty;
+            //int count = 0;
+            char[] ch = textBox.Text.ToCharArray();
+
+            if (rdiobtnAns2Integer.IsChecked == true)
+            {
+                newText = IntAnswer(ch);
+            }
+            else if (rdiobtnAns2Float.IsChecked == true)
+            {
+                newText = DecimalAnswer(ch);
+            }
+            else if (rdiobtnAns2String.IsChecked == true)
+            {
+                foreach (char c in ch)
+                {
+                    newText += c;
+                }
+            }
+            //else if (rdiobtnAns1Fraction.IsChecked == true)
+            //{
+            //    MessageBox.Show("Select Fraction Type");
+            //}
+
+            textBox.Text = newText;
+            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
+        }
+
+        private void btnAddAltAns2_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtboxAltAns2.Text))
+            {
+                OCAltAns2.Add(txtboxAltAns2.Text);
+                lstboxAltAns2.ItemsSource = OCAltAns2;
+            }
+
+            txtboxAltAns2.Text = "";
+            txtboxAltAns2.Focus();
+        }
+
+        private void txtbxAltAns2AB_A_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAltAns2AB_B_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAltAns2ABC_A_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAltAns2ABC_B_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        private void txtbxAltAns2ABC_c_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            ReadIntegerValue(textBox);
+        }
+
+        
     }
 }

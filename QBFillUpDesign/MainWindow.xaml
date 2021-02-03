@@ -9,8 +9,36 @@
     <Window.Resources>
         <DataTemplate x:Key="txtboxRemove" >
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="txtboxImgPath" Text="{Binding}" Padding="2,6"  FontSize="14" Height="30"/>
-                <Button Width="20" Height="20" x:Name="btnRemove" Click="btnRemove_Click" Foreground="WhiteSmoke" Content="X" FontSize="16"/>
+                <TextBlock Background="Beige" x:Name="txtboxImgPath" Text="{Binding}" Padding="2,6"  FontSize="14" Height="30"/>
+                <Button Background="Beige" Width="25" Height="28" x:Name="btnImgPathRemove" Click="btnImgPathRemove_Click" Foreground="Black" Content="X" FontSize="16"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="lstboxAns1Remove" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Background="Beige" x:Name="txtboxAns1" Text="{Binding}" Padding="2,6"  FontSize="14" Height="30"/>
+                <Button Background="Beige" Width="25" Height="28" x:Name="btnAns1Remove" Click="btnAns1Remove_Click" Foreground="Black" Content="X" FontSize="16"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="lstboxAltAns1Remove" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Background="Beige" x:Name="txtboxAns1" Text="{Binding}" Padding="2,6"  FontSize="14" Height="30"/>
+                <Button Background="Beige" Width="25" Height="28" x:Name="btnAltAns1Remove" Click="btnAltAns1Remove_Click" Foreground="Black" Content="X" FontSize="16"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="lstboxAns2Remove" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Background="Beige" x:Name="txtboxAns1" Text="{Binding}" Padding="2,6"  FontSize="14" Height="30"/>
+                <Button Background="Beige" Width="25" Height="28" x:Name="btnAns2Remove" Click="btnAns2Remove_Click" Foreground="Black" Content="X" FontSize="16"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="lstboxAltAns2Remove" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Background="Beige" x:Name="txtboxAns1" Text="{Binding}" Padding="2,6"  FontSize="14" Height="30"/>
+                <Button Background="Beige" Width="25" Height="28" x:Name="btnAltAns2Remove" Click="btnAltAns2Remove_Click" Foreground="Black" Content="X" FontSize="16"/>
             </StackPanel>
         </DataTemplate>
 
@@ -109,7 +137,7 @@
                 <!--First Blank-->
                 <StackPanel x:Name="Answer1">
                     <TextBlock Background="White" x:Name="HeaderAns1" Text="Answer" Width="90" HorizontalAlignment="Left" Margin="20,10" FontSize="20" FontWeight="Bold"/>
-                    <Border Width="860" Height="300" BorderBrush="Black" BorderThickness="1" Margin="26,0,14,0">
+                    <Border Width="860"  BorderBrush="Black" BorderThickness="1" Margin="26,0,14,0">
                         <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                             <TextBlock Background="White"  Text="Answer Type" Width="100" HorizontalAlignment="Left" Margin="20,10" FontSize="16" FontWeight="Bold"/>
                             <StackPanel Orientation="Horizontal">
@@ -118,7 +146,7 @@
                                 <RadioButton  x:Name="rdiobtnAns1String" Checked="rdiobtnAns1String_Checked"  GroupName="AnsType" Content="String" FontSize="16" Width="100" Height="40"  Margin="50,0" />
                                 <RadioButton  x:Name="rdiobtnAns1Fraction" Checked="rdiobtnAns1Fraction_Checked" GroupName="AnsType" Content="Fraction" FontSize="16" Width="100" Height="40"  Margin="50,0" />
                             </StackPanel>
-                            <StackPanel x:Name="stkpnlFraction" Orientation="Horizontal" Width="900" Visibility="Collapsed">
+                            <StackPanel x:Name="stkpnlAns1Fraction" Orientation="Horizontal" Width="900" Visibility="Collapsed">
                                 <RadioButton GroupName="FractionFormat" Content="A/B" Margin="650,0,0,0" FontSize="16" Width="50" Height="40" x:Name="rdiobtnAns1FormatAB" Checked="rdiobtnAns1FormatAB_Checked" />
                                 <RadioButton GroupName="FractionFormat" Content="A.B/C" FontSize="16" Width="65" Height="40" x:Name="rdiobtnAns1FormatABC" Checked="rdiobtnAns1FormatABC_Checked" />
                             </StackPanel>
@@ -140,7 +168,7 @@
                                         <Button Style="{DynamicResource RoundCorner}" x:Name="btnAddAns1" Click="btnAddAns1_Click" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
                                     </StackPanel>
                                     <!--Fraction-->
-                                    <StackPanel x:Name="stkpnlFractFormatAB" Orientation="Horizontal" Margin="20,10,0,0" Height="110" Visibility="Collapsed">
+                                    <StackPanel x:Name="stkpnlAns1FractFormatAB" Orientation="Horizontal" Margin="20,10,0,0" Height="110" Visibility="Collapsed">
                                         <StackPanel Orientation="Vertical" Height="100">
                                             <TextBlock Text="A" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
                                             <Separator Foreground="Black"/>
@@ -148,14 +176,14 @@
                                         </StackPanel>
                                         <TextBlock Text=":" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
                                         <StackPanel Orientation="Vertical" Height="110">
-                                            <TextBox x:Name="txtbxAB_A" Padding="0,10,0,0" TextChanged="txtbxAB_A_TextChanged" Width="100" Height="40"/>
+                                            <TextBox x:Name="txtbxAns1AB_A" Padding="0,10,0,0" TextChanged="txtbxAns1AB_A_TextChanged" Width="100" Height="40"/>
                                             <Separator Foreground="Black"  Margin="5,10"/>
-                                            <TextBox x:Name="txtbxAB_B" Padding="0,10,0,0"  TextChanged="txtbxAB_B_TextChanged" Width="100" Height="40"/>
+                                            <TextBox x:Name="txtbxAns1AB_B" Padding="0,10,0,0"  TextChanged="txtbxAns1AB_B_TextChanged" Width="100" Height="40"/>
                                         </StackPanel>
                                     </StackPanel>
 
 
-                                    <StackPanel x:Name="stkpnlFractFormatABC" Orientation="Horizontal" Visibility="Collapsed">
+                                    <StackPanel x:Name="stkpnlAns1FractFormatABC" Orientation="Horizontal" Visibility="Collapsed">
                                         <TextBlock Text="A" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,0"/>
                                         <StackPanel Orientation="Vertical" Height="90">
                                             <TextBlock Text="B" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
@@ -163,23 +191,23 @@
                                             <TextBlock Text="C" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
                                         </StackPanel>
                                         <TextBlock Text="  :  " VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
-                                        <TextBox x:Name="txtbxABC_A" TextChanged="txtbxABC_A_TextChanged" Padding="0,10,0,0" Width="100" Height="40" Margin="10,0"/>
+                                        <TextBox x:Name="txtbxAns1ABC_A" TextChanged="txtbxAns1ABC_A_TextChanged" Padding="0,10,0,0" Width="100" Height="40" Margin="10,0"/>
                                         <StackPanel Orientation="Vertical" Height="100">
-                                            <TextBox x:Name="txtbxABC_B" TextChanged="txtbxABC_B_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                            <TextBox x:Name="txtbxAns1ABC_B" TextChanged="txtbxAns1ABC_B_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
                                             <Separator Foreground="Black"  Margin="5,10"/>
-                                            <TextBox x:Name="txtbxABC_c" TextChanged="txtbxABC_c_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                            <TextBox x:Name="txtbxAns1ABC_c" TextChanged="txtbxAns1ABC_c_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
                                         </StackPanel>
                                     </StackPanel>
-                                    <TextBlock Visibility="Collapsed" Height="30" x:Name="txtblkErrMsg" Margin="50,10,0,0" Foreground="Red" FontSize="16"/>
+                                    <TextBlock Visibility="Collapsed" Height="30" x:Name="txtblkAns1ErrMsg" Margin="50,10,0,0" Foreground="Red" FontSize="16"/>
                                 
                                 <!--#endregion-->
-                                    <ListBox Name="lstboxAns1" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
-                                    <ListBox.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"/>
-                                        </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
-                                        
+                                    <ListBox Name="lstboxAns1" ItemTemplate="{StaticResource lstboxAns1Remove}" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
                                     </ListBox>
                                 </StackPanel>
 
@@ -187,20 +215,54 @@
                                 <StackPanel Grid.Column="1" Orientation="Vertical">
                                     <TextBlock Text="Alternate Answer" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,5"/>
                                     <Separator Background="Black"/>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" x:Name="stkpnlAltAns1TxtbxBtn">
                                         <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="2" Margin="10,10,0,0"
                                             HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBox Width="350" Height="40" BorderThickness="0"/>
+                                            <TextBox Padding="0,10,0,0" FontSize="16" x:Name="txtboxAltAns1" TextChanged="txtboxAltAns1_TextChanged" Width="350" Height="40" BorderThickness="0"/>
                                         </Border>
-                                        <Button Style="{DynamicResource RoundCorner}" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
+                                        <Button Style="{DynamicResource RoundCorner}" x:Name="btnAddAltAns1" Click="btnAddAltAns1_Click" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
                                     </StackPanel>
-                                    <ListBox Name="lstboxAltAns" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
+                                    <!--Fraction-->
+                                    <StackPanel x:Name="stkpnlAltAns1FractFormatAB" Orientation="Horizontal" Margin="20,10,0,0" Height="110" Visibility="Collapsed">
+                                        <StackPanel Orientation="Vertical" Height="100">
+                                            <TextBlock Text="A" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                            <Separator Foreground="Black"/>
+                                            <TextBlock Text="B" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                        </StackPanel>
+                                        <TextBlock Text=":" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
+                                        <StackPanel Orientation="Vertical" Height="110">
+                                            <TextBox x:Name="txtbxAltAns1AB_A" Padding="0,10,0,0" TextChanged="txtbxAltAns1AB_A_TextChanged" Width="100" Height="40"/>
+                                            <Separator Foreground="Black"  Margin="5,10"/>
+                                            <TextBox x:Name="txtbxAltAns1AB_B" Padding="0,10,0,0"  TextChanged="txtbxAltAns1AB_B_TextChanged" Width="100" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+                                    <StackPanel x:Name="stkpnlAltAns1FractFormatABC" Orientation="Horizontal" Visibility="Collapsed">
+                                        <TextBlock Text="A" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,0"/>
+                                        <StackPanel Orientation="Vertical" Height="90">
+                                            <TextBlock Text="B" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                            <Separator Foreground="Black"/>
+                                            <TextBlock Text="C" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                        </StackPanel>
+                                        <TextBlock Text="  :  " VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
+                                        <TextBox x:Name="txtbxAltAns1ABC_A" TextChanged="txtbxAltAns1ABC_A_TextChanged" Padding="0,10,0,0" Width="100" Height="40" Margin="10,0"/>
+                                        <StackPanel Orientation="Vertical" Height="100">
+                                            <TextBox x:Name="txtbxAltAns1ABC_B" TextChanged="txtbxAltAns1ABC_B_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                            <Separator Foreground="Black"  Margin="5,10"/>
+                                            <TextBox x:Name="txtbxAltAns1ABC_c" TextChanged="txtbxAltAns1ABC_c_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <TextBlock Visibility="Collapsed" Height="30" x:Name="txtblkAltAns1ErrMsg" Margin="50,10,0,0" Foreground="Red" FontSize="16"/>
+                                
+                                <!--#endregion-->
+                                    <ListBox Name="lstboxAltAns1" ItemTemplate="{StaticResource lstboxAltAns1Remove}" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                         <ListBox.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal"/>
+                                                <WrapPanel/>
                                             </ItemsPanelTemplate>
                                         </ListBox.ItemsPanel>
-
                                     </ListBox>
                                 </StackPanel>
                             </Grid>
@@ -211,21 +273,24 @@
                 <!--#endregion-->
 
                 <!--Second Blank-->
-                <StackPanel x:Name="Answer2" Margin="-8,0,8,0">
+                <StackPanel x:Name="Answer2">
                     <TextBlock Background="White" x:Name="HeaderAns2" Text="Answer" Width="90" HorizontalAlignment="Left" Margin="20,10" FontSize="20" FontWeight="Bold"/>
-                    <Border Width="860" Height="250" BorderBrush="Black" BorderThickness="1">
+                    <Border Width="860"  BorderBrush="Black" BorderThickness="1" Margin="26,0,14,0">
                         <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                            <StackPanel Orientation="Horizontal" Width="860">
-                                <ComboBox x:Name="cmboboxQuesTypeAns2" Width="120" Height="30" FontSize="16" Margin="730,5,0,5">
-                                    <ComboBoxItem Content="Integer" FontSize="16"></ComboBoxItem>
-                                    <ComboBoxItem Content="Float" FontSize="16"></ComboBoxItem>
-                                    <ComboBoxItem Content="String" FontSize="16"></ComboBoxItem>
-                                    <ComboBoxItem Content="Fraction" FontSize="16"></ComboBoxItem>
-                                </ComboBox>
+                            <TextBlock Background="White"  Text="Answer Type" Width="100" HorizontalAlignment="Left" Margin="20,10" FontSize="16" FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rdiobtnAns2Integer" Checked="rdiobtnAns2Integer_Checked" GroupName="AnsType" Content="Integer" Width="100" Height="40" FontSize="16" Margin="50,0" />
+                                <RadioButton  x:Name="rdiobtnAns2Float" Checked="rdiobtnAns2Float_Checked" GroupName="AnsType" Content="Float" Width="100" Height="40" FontSize="16"  Margin="50,0" />
+                                <RadioButton  x:Name="rdiobtnAns2String" Checked="rdiobtnAns2String_Checked"  GroupName="AnsType" Content="String" FontSize="16" Width="100" Height="40"  Margin="50,0" />
+                                <RadioButton  x:Name="rdiobtnAns2Fraction" Checked="rdiobtnAns2Fraction_Checked" GroupName="AnsType" Content="Fraction" FontSize="16" Width="100" Height="40"  Margin="50,0" />
+                            </StackPanel>
+                            <StackPanel x:Name="stkpnlAns2Fraction" Orientation="Horizontal" Width="900" Visibility="Collapsed">
+                                <RadioButton GroupName="FractionFormat" Content="A/B" Margin="650,0,0,0" FontSize="16" Width="50" Height="40" x:Name="rdiobtnAns2FormatAB" Checked="rdiobtnAns2FormatAB_Checked" />
+                                <RadioButton GroupName="FractionFormat" Content="A.B/C" FontSize="16" Width="65" Height="40" x:Name="rdiobtnAns2FormatABC" Checked="rdiobtnAns2FormatABC_Checked" />
                             </StackPanel>
                             <Separator Background="Black"/>
                             <!--<Line X1="0" Y1="5" X2="860" Y2="5" Stroke="Black" StrokeThickness="1" />-->
-                            <Grid ShowGridLines="True">
+                            <Grid ShowGridLines="True" Height="213">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="429"/>
                                     <ColumnDefinition Width="430"/>
@@ -233,24 +298,54 @@
                                 <StackPanel Grid.Column="0" Orientation="Vertical">
                                     <TextBlock Text="Answer" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,5"/>
                                     <Separator Background="Black"/>
-                                    <StackPanel Orientation="Horizontal" Height="40">
-                                        <RadioButton GroupName="FractionFormatAns2" Content="A/B" Margin="90,10" FontSize="18" Width="50" Height="40" x:Name="rdiobtnFormatAB_Blnk2"/>
-                                        <RadioButton GroupName="FractionFormatAns2" Content="A.B/C"  Margin="10" FontSize="18" Width="65" Height="40" x:Name="rdiobtnFormatABC_Blnk2"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" x:Name="stkpnlAns2TxtbxBtn">
                                         <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="2" Margin="10,10,0,0"
                                             HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBox Width="350" Height="40" BorderThickness="0"/>
+                                            <TextBox Padding="0,10,0,0" FontSize="16" x:Name="txtboxAns2" TextChanged="txtboxAns2_TextChanged" Width="350" Height="40" BorderThickness="0"/>
                                         </Border>
-                                        <Button Style="{DynamicResource RoundCorner}" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
+                                        <Button Style="{DynamicResource RoundCorner}" x:Name="btnAddAns2" Click="btnAddAns2_Click" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
                                     </StackPanel>
-                                    <ListBox Name="lstboxAns2" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
+                                    <!--Fraction-->
+                                    <StackPanel x:Name="stkpnlAns2FractFormatAB" Orientation="Horizontal" Margin="20,10,0,0" Height="110" Visibility="Collapsed">
+                                        <StackPanel Orientation="Vertical" Height="100">
+                                            <TextBlock Text="A" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                            <Separator Foreground="Black"/>
+                                            <TextBlock Text="B" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                        </StackPanel>
+                                        <TextBlock Text=":" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
+                                        <StackPanel Orientation="Vertical" Height="110">
+                                            <TextBox x:Name="txtbxAns2AB_A" Padding="0,10,0,0" TextChanged="txtbxAns2AB_A_TextChanged" Width="100" Height="40"/>
+                                            <Separator Foreground="Black"  Margin="5,10"/>
+                                            <TextBox x:Name="txtbxAns2AB_B" Padding="0,10,0,0"  TextChanged="txtbxAns2AB_B_TextChanged" Width="100" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+                                    <StackPanel x:Name="stkpnlAns2FractFormatABC" Orientation="Horizontal" Visibility="Collapsed">
+                                        <TextBlock Text="A" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,0"/>
+                                        <StackPanel Orientation="Vertical" Height="90">
+                                            <TextBlock Text="B" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                            <Separator Foreground="Black"/>
+                                            <TextBlock Text="C" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                        </StackPanel>
+                                        <TextBlock Text="  :  " VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
+                                        <TextBox x:Name="txtbxAns2ABC_A" TextChanged="txtbxAns2ABC_A_TextChanged" Padding="0,10,0,0" Width="100" Height="40" Margin="10,0"/>
+                                        <StackPanel Orientation="Vertical" Height="100">
+                                            <TextBox x:Name="txtbxAns2ABC_B" TextChanged="txtbxAns2ABC_B_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                            <Separator Foreground="Black"  Margin="5,10"/>
+                                            <TextBox x:Name="txtbxAns2ABC_c" TextChanged="txtbxAns2ABC_c_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <TextBlock Visibility="Collapsed" Height="30" x:Name="txtblkAns2ErrMsg" Margin="50,10,0,0" Foreground="Red" FontSize="16"/>
+
+                                    <!--#endregion-->
+                                    <ListBox Name="lstboxAns2" ItemTemplate="{StaticResource lstboxAns2Remove}" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                         <ListBox.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal"/>
+                                                <WrapPanel/>
                                             </ItemsPanelTemplate>
                                         </ListBox.ItemsPanel>
-
                                     </ListBox>
                                 </StackPanel>
 
@@ -258,20 +353,54 @@
                                 <StackPanel Grid.Column="1" Orientation="Vertical">
                                     <TextBlock Text="Alternate Answer" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,5"/>
                                     <Separator Background="Black"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="2" Margin="10,50,0,0"
+                                    <StackPanel Orientation="Horizontal" x:Name="stkpnlAltAns2TxtbxBtn">
+                                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="2" Margin="10,10,0,0"
                                             HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBox Width="350" Height="40" BorderThickness="0"/>
+                                            <TextBox Padding="0,10,0,0" FontSize="16" x:Name="txtboxAltAns2" TextChanged="txtboxAltAns2_TextChanged" Width="350" Height="40" BorderThickness="0"/>
                                         </Border>
-                                        <Button Style="{DynamicResource RoundCorner}" Height="40" Width="40" Margin="10,50,0,0" Content="+" FontSize="20"/>
+                                        <Button Style="{DynamicResource RoundCorner}" x:Name="btnAddAltAns2" Click="btnAddAltAns2_Click" Height="40" Width="40" Margin="10,10,0,0" Content="+" FontSize="20"/>
                                     </StackPanel>
-                                    <ListBox Name="lstboxAltAns2" ItemTemplate="{StaticResource txtboxRemove}" Height="40" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent">
+                                    <!--Fraction-->
+                                    <StackPanel x:Name="stkpnlAltAns2FractFormatAB" Orientation="Horizontal" Margin="20,10,0,0" Height="110" Visibility="Collapsed">
+                                        <StackPanel Orientation="Vertical" Height="100">
+                                            <TextBlock Text="A" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                            <Separator Foreground="Black"/>
+                                            <TextBlock Text="B" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                        </StackPanel>
+                                        <TextBlock Text=":" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
+                                        <StackPanel Orientation="Vertical" Height="110">
+                                            <TextBox x:Name="txtbxAltAns2AB_A" Padding="0,10,0,0" TextChanged="txtbxAltAns2AB_A_TextChanged" Width="100" Height="40"/>
+                                            <Separator Foreground="Black"  Margin="5,10"/>
+                                            <TextBox x:Name="txtbxAltAns2AB_B" Padding="0,10,0,0"  TextChanged="txtbxAltAns2AB_B_TextChanged" Width="100" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+                                    <StackPanel x:Name="stkpnlAltAns2FractFormatABC" Orientation="Horizontal" Visibility="Collapsed">
+                                        <TextBlock Text="A" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,0"/>
+                                        <StackPanel Orientation="Vertical" Height="90">
+                                            <TextBlock Text="B" VerticalAlignment="Bottom" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                            <Separator Foreground="Black"/>
+                                            <TextBlock Text="C" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="10,12"/>
+                                        </StackPanel>
+                                        <TextBlock Text="  :  " VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,12"/>
+                                        <TextBox x:Name="txtbxAltAns2ABC_A" TextChanged="txtbxAltAns2ABC_A_TextChanged" Padding="0,10,0,0" Width="100" Height="40" Margin="10,0"/>
+                                        <StackPanel Orientation="Vertical" Height="100">
+                                            <TextBox x:Name="txtbxAltAns2ABC_B" TextChanged="txtbxAltAns2ABC_B_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                            <Separator Foreground="Black"  Margin="5,10"/>
+                                            <TextBox x:Name="txtbxAltAns2ABC_c" TextChanged="txtbxAltAns2ABC_c_TextChanged" Padding="0,10,0,0" Width="100" Height="40"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <TextBlock Visibility="Collapsed" Height="30" x:Name="txtblkAltAns2ErrMsg" Margin="50,10,0,0" Foreground="Red" FontSize="16"/>
+
+                                    <!--#endregion-->
+                                    <ListBox Name="lstboxAltAns2" ItemTemplate="{StaticResource lstboxAltAns2Remove}" Width="420" Margin="0,10" BorderThickness="0" Background="Transparent"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                         <ListBox.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal"/>
+                                                <WrapPanel/>
                                             </ItemsPanelTemplate>
                                         </ListBox.ItemsPanel>
-
                                     </ListBox>
                                 </StackPanel>
                             </Grid>
@@ -279,7 +408,6 @@
                         </StackPanel>
                     </Border>
                 </StackPanel>
-
                 <!--Insert Button-->
                 <Button Style="{DynamicResource RoundCorner}" Margin="0,30" Content="Insert" Width="150" Height="50"/>
 
